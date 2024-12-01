@@ -3,4 +3,7 @@ command = "yarn && npx umi build"
 publish = "dist"
 
 [build.environment]
-NODE_VERSION = "18"
+NODE_VERSION = "18.17.1"
+
+[site]
+bucket = "dist"
