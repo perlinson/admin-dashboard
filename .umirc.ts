@@ -10,6 +10,7 @@ export default defineConfig({
     title: '游戏管理后台',
     locale: false,
   },
+  esbuildMinifyIIFE: true,
   routes: [
     {
       path: '/user',
