@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Player {
+  id        String   @id @default(uuid())
+  username  String
+  resources String   // JSON 数据存储为字符串
+  level     Int
+  createdAt DateTime @default(now())
+}
+
+model Building {
+  id           String @id @default(uuid())
+  name         String
+  type         String
+  requirements String // JSON 数据存储为字符串
+  effects      String // JSON 数据存储为字符串
+  upgradeCosts String // JSON 数据存储为字符串
+}
+
+model Technology {
+  id           String @id @default(uuid())
+  name         String
+  description  String?
+  requirements String // JSON 数据存储为字符串
+  effects      String // JSON 数据存储为字符串
+  researchTime Int
+}
+
+model ResourceConfig {
+  id                 String  @id @default(uuid())
+  name               String
+  baseProductionRate Float
+  maxStorage         Int
+}
+
+model Event {
+  id         String @id @default(uuid())
+  name       String
+  conditions String // JSON 数据存储为字符串
+  effects    String // JSON 数据存储为字符串
+  probability Float
+}
